@@ -1,0 +1,12 @@
+.expenses {
+  width: 80%;
+  margin: 2rem auto;
+  background-color: rgb(31, 31, 31);
+  padding: 1rem;
+}
+
+@media (max-width: 600px) {
+  .expenses {
+    width: 97%;
+  }
+}

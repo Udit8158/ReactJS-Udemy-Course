@@ -1,0 +1,39 @@
+.expense-item {
+  width: 100%;
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+  background-color: #4b4b4b;
+  align-items: center;
+  padding: 10px 10px;
+}
+
+.expense-item__left-container {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.expense-item__title {
+  color: white;
+}
+
+.expense-item__amount {
+  background-color: #40005d;
+  padding: 6px 16px;
+  border: 2px solid white;
+  border-radius: 10px;
+  color: white;
+  font-size: 1.5rem;
+}
+
+@media (max-width: 500px) {
+  .expense-item__amount {
+    font-size: 0.9rem;
+    padding: 4px;
+  }
+
+  .expense-item__title {
+    font-size: 1rem;
+  }
+}
