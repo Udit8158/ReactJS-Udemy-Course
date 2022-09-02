@@ -4,9 +4,11 @@ import "./ExpenseItemDate.css";
 // It is the calender type date which is actually inside expense item
 const ExpenseItemDate = (props) => {
   // Set day moth and yeard in readable format
-  const day = props.date.toLocaleString("en-US", { day: "2-digit" });
-  const year = props.date.getFullYear();
-  const month = props.date.toLocaleString("en-US", { month: "long" });
+
+  const dateInObj = new Date(props.date)
+  const day = dateInObj.toLocaleString("en-US", { day: "2-digit" });
+  const year = dateInObj.getFullYear();
+  const month = dateInObj.toLocaleString("en-US", { month: "long" });
 
   return (
     <Card className="expense-item-date">
