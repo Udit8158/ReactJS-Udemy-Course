@@ -1,4 +1,5 @@
-import Expenses from "./components/Expenses/ExpensesContainer";
+import Expenses from "./components/Expenses/Expenses";
+import NewExpense from "./components/NewExpense/NewExpense";
 const App = () => {
   // Hard coded some expensed
   const expenses = [
@@ -22,8 +23,15 @@ const App = () => {
       date: new Date(2021, 5, 12),
     },
   ];
+
+  // Taking inputData from the NewExpenseFile
+  const takeFormDataHandler = (expenceDataByUser) => {
+    expenses.push(expenceDataByUser);
+    console.log(expenses);
+  };
   return (
     <>
+      <NewExpense onTakeSubmitFormData={takeFormDataHandler} />
       <Expenses expenses={expenses} />
     </>
   );
