@@ -5,12 +5,6 @@
   padding: 1rem;
 }
 
-.conditional-para {
-  font-weight: 500;
-  color: white;
-  text-align: center;
-  font-size: 1.4rem;
-}
 @media (max-width: 600px) {
   .expenses {
     width: 97%;
