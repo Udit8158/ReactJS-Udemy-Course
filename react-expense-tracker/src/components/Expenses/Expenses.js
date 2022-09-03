@@ -17,6 +17,20 @@ const Expenses = (props) => {
   const filteredExpenses = props.expenses.filter((expense) => {
     return expense.date.slice(0, 4) === filteredYear;
   });
+
+  // Expenses returned element  (Approach 3)
+
+  let expensesElement = (
+    <p className="conditional-para">
+      You do not have any expenses on {filteredYear}
+    </p>
+  );
+
+  if (filteredExpenses.length > 0) {
+    expensesElement = filteredExpenses.map((expense) => {
+      return <ExpenseItem expense={expense} key={expense.id} />;
+    });
+  }
   return (
     <>
       <Card className="expenses">
@@ -24,9 +38,30 @@ const Expenses = (props) => {
           onChangeYear={pickYearData}
           filteredYear={filteredYear}
         />
-        {filteredExpenses.map((expense) => {
-          return <ExpenseItem expense={expense} key={expense.id} />;
-        })}
+        {/*  TODO:   Approach 1 */}
+        {/* {filteredExpenses.length === 0 ? (
+          <p className="conditional-para">
+            You do not have any expenses on {filteredYear}
+          </p>
+        ) : (
+          filteredExpenses.map((expense) => {
+            return <ExpenseItem expense={expense} key={expense.id} />;
+          })
+        )} */}
+        {/* TODO:  Approach 2 */}
+        {/* {filteredExpenses.length === 0 && (
+          <p className="conditional-para">
+            You do not have any expenses on {filteredYear}
+          </p>
+        )}
+
+        {filteredExpenses.length > 0 &&
+          filteredExpenses.map((expense) => {
+            return <ExpenseItem expense={expense} key={expense.id} />;
+          })} */}
+
+        {/*  TODO: For approach 3 */}
+        {expensesElement}
       </Card>
     </>
   );
