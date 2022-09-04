@@ -1,4 +1,4 @@
-import React, { useId, useState } from "react";
+import React, { useState } from "react";
 
 import "./ExpenseForm.css";
 
@@ -7,12 +7,6 @@ const ExpenseForm = (props) => {
   const [enteredTitle, setEnteredTitle] = useState("");
   const [enteredAmount, setEnteredAmount] = useState("");
   const [enteredDate, setEnteredDate] = useState("");
-
-  // const [userInput, setUserInput] = useState({
-  //   enteredTitle: "",
-  //   enteredAmount: "",
-  //   enteredDate: "",
-  // });
 
   // Handler for changing inputs
   const titleChangeHandler = (event) => {
@@ -53,6 +47,11 @@ const ExpenseForm = (props) => {
       amount: enteredAmount,
       date: enteredDate,
     };
+
+    // Setting data in local storage
+    const expenses = JSON.parse(localStorage.getItem("expenses"));
+    expenses.unshift(expenseData);
+    localStorage.setItem("expenses", JSON.stringify(expenses));
 
     // Sending data to Parent
     props.onFormDataSubmit(expenseData);
