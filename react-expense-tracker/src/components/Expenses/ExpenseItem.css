@@ -29,11 +29,11 @@
 
 @media (max-width: 500px) {
   .expense-item__amount {
-    font-size: 0.9rem;
-    padding: 4px;
+    font-size: 1.2rem;
+    padding: 6px;
   }
 
   .expense-item__title {
-    font-size: 1rem;
+    font-size: 1.3rem;
   }
 }
