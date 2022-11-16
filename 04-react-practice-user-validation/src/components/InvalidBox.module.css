@@ -1,0 +1,43 @@
+.invalid-box {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  margin-top: 20px;
+  position: relative;
+}
+
+.heading {
+  background-color: blueviolet;
+  color: white;
+  padding: 0px 10px;
+}
+
+.message {
+  padding: 0px 10px;
+}
+
+.btn {
+  position: relative;
+  left: 85%;
+  width: fit-content;
+  padding: 10px 20px;
+  background-color: rgb(145, 49, 235);
+  border-radius: 4px;
+  color: white;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.btn:hover {
+  background-color: rgb(123, 15, 224);
+}
+
+@media (max-width: 768px) {
+  .btn {
+    width: 80%;
+    margin: auto;
+    margin-bottom: 20px;
+    left: 0;
+  }
+}
