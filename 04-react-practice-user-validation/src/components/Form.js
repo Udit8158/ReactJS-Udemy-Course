@@ -1,8 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Card from "./Card";
 import styles from "./Form.module.css";
 
 const Form = (props) => {
+  // Using ref which has referance of input tags
+  const nameInputRef = useRef();
+  const ageInputRef = useRef();
+
   // gettinga users from local storage and set them in state
   let usersArr = JSON.parse(localStorage.getItem("users"));
 
@@ -22,6 +26,9 @@ const Form = (props) => {
   const onChangeAge = (event) => setUserAge(event.target.value);
 
   const addUser = () => {
+    // Using ref just for practice
+    // console.log(nameInputRef.current.value, ageInputRef.current.value);
+
     // Not add invalid information. Adding users validation
     if (userName.trim().length == 0 || userAge.trim().length == 0) {
       console.log("Please enter valid information");
@@ -59,6 +66,7 @@ const Form = (props) => {
           placeholder="Enter user name"
           onChange={onChangeName}
           value={userName}
+          ref={nameInputRef}
         />
       </div>
 
@@ -69,6 +77,7 @@ const Form = (props) => {
           placeholder="Enter user age"
           onChange={onChangeAge}
           value={userAge}
+          ref={ageInputRef}
         />
       </div>
 

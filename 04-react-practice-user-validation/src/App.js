@@ -15,7 +15,7 @@ function App() {
   const userDataHandler = (data) => setUsers(data);
 
   return (
-    <div>
+    <>
       <Form
         userDataHandler={userDataHandler}
         isValid={isValid}
@@ -26,7 +26,7 @@ function App() {
         <InvalidBox invalidMsg={invalidMsg} setIsValid={setIsValid} />
       )}
       <Users users={users} setIsValid={setIsValid} />
-    </div>
+    </>
   );
 }
 
