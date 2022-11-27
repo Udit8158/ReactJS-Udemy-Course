@@ -1,9 +1,15 @@
-function App() {
+import React from "react";
+
+import Header from "./components/Layout/Header";
+import Meals from "./components/Meals/Meals";
+
+const App = () => {
   return (
-    <div className="App">
-      <h1>ello</h1>
-    </div>
+    <>
+      <Header />
+      <Meals />
+    </>
   );
-}
+};
 
 export default App;
