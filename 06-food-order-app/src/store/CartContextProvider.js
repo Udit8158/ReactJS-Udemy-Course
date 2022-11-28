@@ -45,7 +45,7 @@ const cartReducer = (state, action) => {
 
   if (action.type === "REMOVE") {
     const existingCartItemIndex = state.items.findIndex(
-      (i) => i.id == action.id
+      (i) => i.id === action.id
     );
     const existingCartItem = state.items[existingCartItemIndex];
 
