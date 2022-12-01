@@ -9,12 +9,13 @@ const AvailableMeals = () => {
   const [error, setError] = useState(null);
 
   const DB_URL =
-    "https://react-http-request-26266-default-rtdb.firebaseio.com/meals.jsons";
+    "https://react-http-request-26266-default-rtdb.firebaseio.com/meals.json";
 
   const fetchMeals = async () => {
     setLoading(true);
 
     const response = await fetch(DB_URL);
+    setLoading(false);
 
     if (!response.ok) {
       throw new Error("Some thing went wrong");
