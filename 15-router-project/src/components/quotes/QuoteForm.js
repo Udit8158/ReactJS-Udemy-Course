@@ -10,13 +10,30 @@ const QuoteForm = (props) => {
   const authorInputRef = useRef();
   const textInputRef = useRef();
 
-  function submitFormHandler(event) {
+  async function submitFormHandler(event) {
     event.preventDefault();
 
     const enteredAuthor = authorInputRef.current.value;
     const enteredText = textInputRef.current.value;
 
+    const enteredData = {
+      text: enteredText,
+      author: enteredAuthor,
+    };
+
     // optional: Could validate here
+
+    // Sending data to firebase
+
+    await fetch(
+      "https://react-http-request-26266-default-rtdb.firebaseio.com/quotes.json",
+      {
+        method: "POST",
+        body: JSON.stringify(enteredData),
+      }
+    );
+
+    // console.log("DONE");
 
     props.onAddQuote({ author: enteredAuthor, text: enteredText });
   }
