@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
+import NoQuotesFound from "../components/quotes/NoQuotesFound";
 import QuoteList from "../components/quotes/QuoteList";
+import LoadingSpinner from "../components/UI/LoadingSpinner";
 
 const DUMMY_QUOTES = [
   { id: "q1", author: "Max", text: "Learning React is fun" },
@@ -7,14 +9,18 @@ const DUMMY_QUOTES = [
 ];
 
 export default function Quotes() {
-  const quotesData = [];
-  const [loadCompleted, setLoadCompleted] = useState(false);
+  const [quotesData, setQuotesData] = useState([]);
+  const [loading, setLoading] = useState(false);
+
   useEffect(() => {
     const fetchQuotes = async () => {
+      setLoading(true);
       const res = await fetch(
         "https://react-http-request-26266-default-rtdb.firebaseio.com/quotes.json"
       );
       const data = await res.json();
+
+      setLoading(false);
 
       for (const key in data) {
         quotesData.push({
@@ -23,11 +29,19 @@ export default function Quotes() {
           text: data[key].author,
         });
       }
-      setLoadCompleted(true);
     };
 
     fetchQuotes();
-    console.log(quotesData);
-  }, [loadCompleted]);
-  return <QuoteList quotes={quotesData} />;
+    // console.log(quotesData);
+  }, []);
+
+  console.log(loading);
+  if (loading) {
+    return <LoadingSpinner />;
+  }
+  console.log(quotesData);
+
+  if (!loading) {
+    return <QuoteList quotes={quotesData} />;
+  }
 }
