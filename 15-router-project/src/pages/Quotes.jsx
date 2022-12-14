@@ -1,13 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import NoQuotesFound from "../components/quotes/NoQuotesFound";
 import QuoteList from "../components/quotes/QuoteList";
 import LoadingSpinner from "../components/UI/LoadingSpinner";
 import useQuotes from "../hooks/use-quotes";
-
-const DUMMY_QUOTES = [
-  { id: "q1", author: "Max", text: "Learning React is fun" },
-  { id: "q2", author: "Emma Watson", text: "Loving Harry Potter" },
-];
 
 export default function Quotes() {
   // const [quotesData, setQuotesData] = useState([]);
@@ -40,7 +35,11 @@ export default function Quotes() {
 
   console.log(loading);
   if (loading) {
-    return <LoadingSpinner />;
+    return (
+      <div className="centered">
+        <LoadingSpinner />
+      </div>
+    );
   }
   console.log(quotesData);
 

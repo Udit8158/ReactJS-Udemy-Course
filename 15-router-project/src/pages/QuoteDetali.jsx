@@ -7,11 +7,6 @@ import LoadingSpinner from "../components/UI/LoadingSpinner";
 import useQuotes from "../hooks/use-quotes";
 
 export default function QuoteDetali() {
-  const DUMMY_QUOTES = [
-    { id: "q1", author: "Max", text: "Learning React is fun" },
-    { id: "q2", author: "Emma Watson", text: "Loving Harry Potter" },
-  ];
-
   const { quotesData, loading } = useQuotes();
 
   // Getting the more information of location
@@ -28,7 +23,11 @@ export default function QuoteDetali() {
   }
 
   if (loading) {
-    return <LoadingSpinner />;
+    return (
+      <div className="centered">
+        <LoadingSpinner />
+      </div>
+    );
   }
 
   return (
