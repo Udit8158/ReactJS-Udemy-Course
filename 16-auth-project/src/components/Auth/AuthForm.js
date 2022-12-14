@@ -1,12 +1,18 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useContext } from "react";
+import { useHistory } from "react-router-dom";
+import AuthContext from "../../store/auth-context";
 
 import classes from "./AuthForm.module.css";
 
-const API_KEY = "AIzaSyCab8Tyn3ovNVDjCOMC-P2Rj-N-YhDsdSI";
+export const API_KEY = "AIzaSyCab8Tyn3ovNVDjCOMC-P2Rj-N-YhDsdSI";
 
 const AuthForm = () => {
   const [isLogin, setIsLogin] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
+
+  const history = useHistory();
+
+  const authCtx = useContext(AuthContext);
 
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
@@ -52,6 +58,10 @@ const AuthForm = () => {
       alert(res.error.message);
     } else {
       console.log(res);
+      authCtx.token = res.idToken;
+      authCtx.logIn(res.idToken);
+
+      history.replace("/");
     }
   };
 
