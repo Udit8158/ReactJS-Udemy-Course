@@ -3,12 +3,16 @@ import { Link, Route, useParams, useRouteMatch } from "react-router-dom";
 import Comments from "../components/comments/Comments";
 import HighlightedQuote from "../components/quotes/HighlightedQuote";
 import NoQuotesFound from "../components/quotes/NoQuotesFound";
+import LoadingSpinner from "../components/UI/LoadingSpinner";
+import useQuotes from "../hooks/use-quotes";
 
 export default function QuoteDetali() {
   const DUMMY_QUOTES = [
     { id: "q1", author: "Max", text: "Learning React is fun" },
     { id: "q2", author: "Emma Watson", text: "Loving Harry Potter" },
   ];
+
+  const { quotesData, loading } = useQuotes();
 
   // Getting the more information of location
   const match = useRouteMatch();
@@ -17,10 +21,14 @@ export default function QuoteDetali() {
   const params = useParams();
   const id = params.quoteId;
 
-  const quote = DUMMY_QUOTES.find((quote) => quote.id === id);
+  const quote = quotesData.find((quote) => quote.id === id);
 
-  if (!quote) {
+  if (!quote && !loading) {
     return <NoQuotesFound />;
+  }
+
+  if (loading) {
+    return <LoadingSpinner />;
   }
 
   return (
