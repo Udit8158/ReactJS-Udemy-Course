@@ -8,12 +8,18 @@ export default function Header() {
       <nav>
         <ul>
           <li>
-            <NavLink activeClassName={classes.active} to="/welcome">
+            <NavLink
+              className={(navData) => navData.isActive && classes.active}
+              to="/welcome"
+            >
               welcome
             </NavLink>
           </li>
           <li>
-            <NavLink activeClassName={classes.active} to="/products">
+            <NavLink
+              className={(navData) => navData.isActive && classes.active}
+              to="/products"
+            >
               products
             </NavLink>
           </li>

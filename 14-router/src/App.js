@@ -1,4 +1,4 @@
-import { Route, Switch } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
 import Header from "./components/Header";
 import Products from "./pages/Products";
 import Welcome from "./pages/Welcome";
@@ -9,18 +9,20 @@ function App() {
   return (
     <>
       <Header />
-      <Switch>
-        <Route path="/welcome">
-          <Welcome />
-        </Route>
-        <Route path="/products" exact>
-          <Products />
+
+      {/* V6 react routing */}
+      <Routes>
+        <Route path="/" element={<Navigate replace to={"/welcome"} />} />
+
+        {/* Nested route */}
+        <Route path="/welcome/*" element={<Welcome />}>
+          <Route path="new-user" element={<p>Hello new user</p>} />
         </Route>
 
-        <Route path="/products/:productId">
-          <ProductDetail />
-        </Route>
-      </Switch>
+        <Route path="/products" element={<Products />} />
+
+        <Route path="/products/:productId" element={<ProductDetail />} />
+      </Routes>
     </>
   );
 }
